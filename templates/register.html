@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ClipVibe | Register</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    /* Base reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(120deg, #f0f9ff, #ede9fe);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: #111827;
+      padding: 1rem;
+    }
+
+    /* Card */
+    .register-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 20px;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      animation: fadeUp 0.6s ease;
+    }
+
+    /* Title */
+    .register-card h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #2563eb;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Form */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    input, select {
+      width: 100%;
+      padding: 0.85rem;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    input:focus, select:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+      outline: none;
+    }
+    select {
+      appearance: none;
+      background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='%236b7280'><path d='M1 1l5 5 5-5'/></svg>") no-repeat right 1rem center;
+      background-size: 12px;
+    }
+
+    /* Button */
+    button {
+      background: #2563eb;
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      padding: 0.9rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+    }
+    button:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+    }
+
+    /* Footer link */
+    .footer {
+      margin-top: 1.25rem;
+      text-align: center;
+      font-size: 0.95rem;
+      color: #374151;
+    }
+    .footer a {
+      color: #2563eb;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer a:hover {
+      color: #1d4ed8;
+    }
+
+    /* Animation */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Mobile */
+    @media (max-width: 480px) {
+      .register-card {
+        padding: 1.5rem;
+      }
+      .register-card h1 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="register-card">
+    <h1>Create Your Account</h1>
+    <form method="POST">
+      <input type="text" name="username" placeholder="Choose a Username" required>
+      <input type="password" name="password" placeholder="Create a Password" required>
+      <select name="role" required>
+        <option value="" disabled selected>Select Your Role</option>
+        <option value="viewer">Viewer</option>
+        <option value="creator">Creator</option>
+      </select>
+      <button type="submit">Join Now</button>
+    </form>
+    <div class="footer">
+      Already have an account? <a href="{{ url_for('login') }}">Sign in</a>
+    </div>
+  </div>
+</body>
+</html>
