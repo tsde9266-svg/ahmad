@@ -1,45 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Videos | Shorts</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends "base.html" %}
+{% block title %}Videos | Shorts{% endblock %}
+{% block content %}
+  <!-- Table list -->
+  <div class="clips-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Preview</th>
+          <th>Title</th>
+          <th>Genre</th>
+          <th>Publisher</th>
+          <th>Likes</th>
+          <th>Comments</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for video in videos %}
+        <tr>
+          <td>
+            <a href="{{ url_for('watch', video_id=video['id']) }}">
+              <video class="thumb" autoplay muted loop playsinline>
+                <source src="{{ video['url'] }}" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </a>
+          </td>
+          <td>{{ video['title'] }}</td>
+          <td>{{ video['genre'] or "N/A" }}</td>
+          <td>{{ video['publisher'] }}</td>
+          <td>
+            <form method="POST" action="{{ url_for('like') }}" class="like-form" data-video-id="{{ video['id'] }}">
+              <button type="button" class="like-btn" data-liked="false">
+                ❤️ <span class="like-count">{{ video['like_count'] }}</span>
+              </button>
+            </form>
+          </td>
+          <td>
+            <a href="{{ url_for('watch', video_id=video['id']) }}" class="comment-link">
+              💬 {{ video['comment_count'] }}
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #f9fafb, #eef2ff);
-      color: #1f2937;
-      padding: 0;
-    }
-
-    /* Navigation */
-    header {
-      width: 100%;
-      padding: 1rem 2rem;
-      background: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    header h1 {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: #2563eb;
-    }
-    nav a {
-      margin-left: 1.5rem;
-      font-weight: 500;
-      text-decoration: none;
-      color: #374151;
-      transition: color 0.3s;
-    }
-    nav a:hover { color: #2563eb; }
-
     /* Table container */
     .clips-container {
       max-width: 1200px;
@@ -90,62 +97,6 @@
     .like-btn { color: #ef4444; }
     .like-btn:hover, .comment-link:hover { transform: scale(1.1); }
   </style>
-</head>
-<body>
-  <!-- Header -->
-  <header>
-    <h1>🔥 Videos</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Categories</a>
-      <a href="#">Profile</a>
-    </nav>
-  </header>
-
-  <!-- Table list -->
-  <div class="clips-container">
-    <table>
-      <thead>
-        <tr>
-          <th>Preview</th>
-          <th>Title</th>
-          <th>Genre</th>
-          <th>Publisher</th>
-          <th>Likes</th>
-          <th>Comments</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for video in videos %}
-        <tr>
-          <td>
-            <a href="{{ url_for('watch', video_id=video['id']) }}">
-              <video class="thumb" autoplay muted loop playsinline>
-                <source src="{{ video['url'] }}" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </a>
-          </td>
-          <td>{{ video['title'] }}</td>
-          <td>{{ video['genre'] or "N/A" }}</td>
-          <td>{{ video['publisher'] }}</td>
-          <td>
-            <form method="POST" action="{{ url_for('like') }}" class="like-form" data-video-id="{{ video['id'] }}">
-              <button type="button" class="like-btn" data-liked="false">
-                ❤️ <span class="like-count">{{ video['like_count'] }}</span>
-              </button>
-            </form>
-          </td>
-          <td>
-            <a href="{{ url_for('watch', video_id=video['id']) }}" class="comment-link">
-              💬 {{ video['comment_count'] }}
-            </a>
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
 
   <!-- Like button script -->
   <script>
@@ -167,5 +118,4 @@
       });
     });
   </script>
-</body>
-</html>
+{% endblock %}

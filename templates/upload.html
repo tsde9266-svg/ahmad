@@ -1,22 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>ClipVibe | Creator Hub</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    /* Reset */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #f9fafb;
-      color: #111827;
-      padding: 2rem 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+{% extends "base.html" %}
+{% block title %}ClipVibe | Creator Hub{% endblock %}
+{% block content %}
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class="notifications">
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
 
+  <section class="upload-section">
+    <h2>Upload New Clip</h2>
+    <form method="POST" action="{{ url_for('upload_video') }}" enctype="multipart/form-data">
+      <div>
+        <label>Title</label>
+        <input type="text" name="title" placeholder="Enter video title" required>
+      </div>
+      <div>
+        <label>Publisher</label>
+        <input type="text" name="publisher" placeholder="Your name or brand" required>
+      </div>
+      <div>
+        <label>Producer</label>
+        <input type="text" name="producer" placeholder="Producer name (optional)">
+      </div>
+      <div>
+        <label>Genre</label>
+        <input type="text" name="genre" placeholder="e.g., Comedy, Music">
+      </div>
+      <div>
+        <label>Age Rating</label>
+        <select name="age_rating" required>
+          <option value="" disabled selected>-- Select Rating --</option>
+          <option value="G">G</option>
+          <option value="PG">PG</option>
+          <option value="12">12</option>
+          <option value="15">15</option>
+          <option value="18">18</option>
+        </select>
+      </div>
+      <div>
+        <label>Upload Clip</label>
+        <input type="file" name="file" accept="video/*">
+      </div>
+      <button type="submit">Upload Clip</button>
+    </form>
+  </section>
+
+  <section class="videos-section">
+    <h2>Your Clips</h2>
+    {% if videos %}
+      <div class="video-grid">
+        {% for video in videos %}
+          <div class="video-card">
+            <video controls>
+              <source src="{{ video.url }}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="video-info">
+              <h3>{{ video.title }}</h3>
+              <p><strong>Genre:</strong> {{ video.genre or "N/A" }}</p>
+              <p><strong>Rating:</strong> {{ video.age_rating or "N/A" }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>You haven't uploaded any clips yet.</p>
+    {% endif %}
+  </section>
+
+  <style>
     /* Titles */
     h1, h2 {
       font-weight: 700;
@@ -163,79 +219,4 @@
       h2 { font-size: 1.15rem; }
     }
   </style>
-</head>
-<body>
-  <h1>Creator Hub</h1>
-
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      <ul class="notifications">
-        {% for message in messages %}
-          <li>{{ message }}</li>
-        {% endfor %}
-      </ul>
-    {% endif %}
-  {% endwith %}
-
-  <section class="upload-section">
-    <h2>Upload New Clip</h2>
-    <form method="POST" action="{{ url_for('upload_video') }}" enctype="multipart/form-data">
-      <div>
-        <label>Title</label>
-        <input type="text" name="title" placeholder="Enter video title" required>
-      </div>
-      <div>
-        <label>Publisher</label>
-        <input type="text" name="publisher" placeholder="Your name or brand" required>
-      </div>
-      <div>
-        <label>Producer</label>
-        <input type="text" name="producer" placeholder="Producer name (optional)">
-      </div>
-      <div>
-        <label>Genre</label>
-        <input type="text" name="genre" placeholder="e.g., Comedy, Music">
-      </div>
-      <div>
-        <label>Age Rating</label>
-        <select name="age_rating" required>
-          <option value="" disabled selected>-- Select Rating --</option>
-          <option value="G">G</option>
-          <option value="PG">PG</option>
-          <option value="12">12</option>
-          <option value="15">15</option>
-          <option value="18">18</option>
-        </select>
-      </div>
-      <div>
-        <label>Upload Clip</label>
-        <input type="file" name="file" accept="video/*">
-      </div>
-      <button type="submit">Upload Clip</button>
-    </form>
-  </section>
-
-  <section class="videos-section">
-    <h2>Your Clips</h2>
-    {% if videos %}
-      <div class="video-grid">
-        {% for video in videos %}
-          <div class="video-card">
-            <video controls>
-              <source src="{{ video.url }}" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-            <div class="video-info">
-              <h3>{{ video.title }}</h3>
-              <p><strong>Genre:</strong> {{ video.genre or "N/A" }}</p>
-              <p><strong>Rating:</strong> {{ video.age_rating or "N/A" }}</p>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
-    {% else %}
-      <p>You haven't uploaded any clips yet.</p>
-    {% endif %}
-  </section>
-</body>
-</html>
+{% endblock %}

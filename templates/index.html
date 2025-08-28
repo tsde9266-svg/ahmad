@@ -1,20 +1,154 @@
 {% extends "base.html" %}
-{% block title %}Home | tikshare{% endblock %}
-
+{% block title %}ClipVibe | Home{% endblock %}
 {% block content %}
-<h2>Welcome to tikshare</h2>
-<p>Your space to explore short-form videos by creators.</p>
+  <section class="hero">
+    <h1>Welcome to ClipVibe</h1>
+    <p class="tagline">Create, Share, and Discover Short Video Clips That Spark Joy</p>
+    <div class="cta-buttons">
+      <a href="{{ url_for('shorts') }}" class="btn primary">Start Watching</a>
+      <a href="{{ url_for('upload_video') }}" class="btn secondary">Upload Now</a>
+    </div>
+  </section>
 
-<div class="video-grid">
-    {% for video in videos %}
-        <div class="video-card">
-            <video width="100%" controls>
-                <source src="{{ video['url'] }}" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <h3>{{ video['title'] }}</h3>
-            <p>{{ video['publisher'] }}</p>
-        </div>
-    {% endfor %}
-</div>
+  <section class="features">
+    <h2>Why ClipVibe?</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3>Create Clips</h3>
+        <p>Upload your short videos, add genres and ratings, and share your creativity with the world.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Discover Shorts</h3>
+        <p>Browse a vibrant collection of clips, from comedy to music, tailored to your interests.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Engage & Connect</h3>
+        <p>Like, comment, and rate clips to join a community of creators and viewers.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>ClipVibe &copy; 2025 | A platform for short video creativity</p>
+  </footer>
+
+  <style>
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 4rem 1rem;
+      background: linear-gradient(135deg, #e0e7ff, #f9fafb);
+      border-radius: 16px;
+      margin: 2rem auto;
+      max-width: 800px;
+      animation: fadeIn 0.8s ease;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      color: #2563eb;
+      margin-bottom: 1rem;
+    }
+    .hero .tagline {
+      font-size: 1.2rem;
+      color: #374151;
+      margin-bottom: 2rem;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .btn {
+      padding: 0.9rem 1.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .btn.primary {
+      background: #2563eb;
+      color: #fff;
+    }
+    .btn.primary:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+    }
+    .btn.secondary {
+      background: #fff;
+      color: #2563eb;
+      border: 1px solid #2563eb;
+    }
+    .btn.secondary:hover {
+      background: #eff6ff;
+      transform: translateY(-2px);
+    }
+
+    /* Features Section */
+    .features {
+      max-width: 1200px;
+      margin: 2rem auto;
+      text-align: center;
+    }
+    .features h2 {
+      font-size: 1.8rem;
+      color: #111827;
+      margin-bottom: 2rem;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 0 1rem;
+    }
+    .feature-card {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+    }
+    .feature-card h3 {
+      font-size: 1.2rem;
+      color: #111827;
+      margin-bottom: 0.5rem;
+    }
+    .feature-card p {
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: #f3f4f6;
+      color: #374151;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .hero .tagline { font-size: 1rem; }
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .hero { padding: 2rem 1rem; }
+      .cta-buttons { flex-direction: column; gap: 0.75rem; }
+      .btn { padding: 0.8rem 1.2rem; }
+      .features h2 { font-size: 1.5rem; }
+    }
+  </style>
 {% endblock %}

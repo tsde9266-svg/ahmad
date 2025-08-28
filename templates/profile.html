@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% block title %}ClipVibe | Profile{% endblock %}
+{% block content %}
+  <section class="profile-section">
+    <h2>Your Profile</h2>
+    {% if user %}
+      <div class="profile-info">
+        <h3>Welcome, {{ user.username }}</h3>
+        <p><strong>Role:</strong> {{ user.role or "N/A" }}</p>
+        <p><a href="{{ url_for('upload_video') }}" class="btn">Upload a Clip</a></p>
+      </div>
+      <h3>Your Uploaded Clips</h3>
+      {% if videos %}
+        <div class="video-grid">
+          {% for video in videos %}
+            <div class="video-card">
+              <video controls>
+                <source src="{{ video.url }}" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-info">
+                <h4>{{ video.title }}</h4>
+                <p><strong>Genre:</strong> {{ video.genre or "N/A" }}</p>
+                <p><strong>Rating:</strong> {{ video.age_rating or "N/A" }}</p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p>You haven't uploaded any clips yet. <a href="{{ url_for('upload_video') }}">Start uploading now!</a></p>
+      {% endif %}
+    {% else %}
+      <p>Error: User information not available.</p>
+    {% endif %}
+  </section>
+
+  <style>
+    .profile-section {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      text-align: center;
+    }
+    .profile-info {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      margin-bottom: 2rem;
+    }
+    .profile-info h3 {
+      font-size: 1.5rem;
+      color: #2563eb;
+      margin-bottom: 1rem;
+    }
+    .profile-info p {
+      font-size: 1rem;
+      color: #374151;
+      margin: 0.5rem 0;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 1.5rem;
+      background: #2563eb;
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+    }
+    h3 {
+      font-size: 1.3rem;
+      color: #111827;
+      margin-bottom: 1rem;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .video-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .video-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+    }
+    .video-card video {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+    .video-info {
+      padding: 1rem;
+    }
+    .video-info h4 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: #111827;
+    }
+    .video-info p {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin: 0.25rem 0;
+    }
+    @media (max-width: 768px) {
+      .video-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+    }
+    @media (max-width: 480px) {
+      .profile-section { padding: 1rem; }
+      .profile-info { padding: 1.5rem; }
+      h3 { font-size: 1.2rem; }
+    }
+  </style>
+{% endblock %}

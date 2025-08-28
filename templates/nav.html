@@ -1,0 +1,12 @@
+<nav>
+  <a href="{{ url_for('shorts') }}" class="{% if request.endpoint == 'shorts' %}active{% endif %}">Shorts</a>
+  {% if session.get('user') %}
+  <a href="{{ url_for('dashboard') }}" class="{% if request.endpoint == 'upload_video' %}active{% endif %}">Creator Hub</a>
+    <a href="{{ url_for('profile') }}">Profile</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+  {% else %}
+  <a href="{{ url_for('index') }}" class="{% if request.endpoint == 'index' %}active{% endif %}">Home</a>
+    <a href="{{ url_for('login') }}">Login</a>
+
+  {% endif %}
+</nav>
