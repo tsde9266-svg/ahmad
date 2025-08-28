@@ -984,7 +984,7 @@ def add_demo_videos():
         'producer': 'Marina Clarke',
         'genre': 'Nature',
         'age_rating': 'G',
-        'url': 'https://player.vimeo.com/external/308859437.sd.mp4?s=4b3a3f49355a99b89d20c09ac6f3f4101a9b1c9e&profile_id=164&oauth2_token_id=57447761',
+        'url': 'https://www.pexels.com/download/video/27047982/',
         'id': 1,
         'like_count': 120,
         'comment_count': 45
@@ -995,7 +995,7 @@ def add_demo_videos():
         'producer': 'Liam Bennett',
         'genre': 'Cooking',
         'age_rating': 'G',
-        'url': 'https://player.vimeo.com/external/211595365.sd.mp4?s=76eb7c4dbd3e80c12d87605e67e6e9b84e4b6f82&profile_id=164&oauth2_token_id=57447761',
+        'url': 'https://www.pexels.com/download/video/27047981/',
         'id': 2,
         'like_count': 85,
         'comment_count': 30
@@ -1006,7 +1006,7 @@ def add_demo_videos():
         'producer': 'Sofia Delgado',
         'genre': 'Dance',
         'age_rating': 'PG',
-        'url': 'https://player.vimeo.com/external/469854120.sd.mp4?s=ccbb3b9b93e8943d0c7e0f55d2ad46c65f40dd3d&profile_id=164&oauth2_token_id=57447761',
+        'url': 'https://www.pexels.com/download/video/27047981/',
         'id': 3,
         'like_count': 200,
         'comment_count': 60
@@ -1017,7 +1017,7 @@ def add_demo_videos():
         'producer': 'Daniel Iqbal',
         'genre': 'Technology',
         'age_rating': 'PG',
-        'url': 'https://player.vimeo.com/external/449748281.sd.mp4?s=9a932de4f2baf423cd45a34ea6f4e52ecfc064eb&profile_id=164&oauth2_token_id=57447761',
+        'url': 'https://www.pexels.com/download/video/27047981/',
         'id': 4,
         'like_count': 150,
         'comment_count': 25
@@ -1028,7 +1028,7 @@ def add_demo_videos():
         'producer': 'Anya Patel',
         'genre': 'Health & Fitness',
         'age_rating': 'G',
-        'url': 'https://player.vimeo.com/external/440940130.sd.mp4?s=8b0a8c61ad8994bb20d34ecb93e13ad3b8c69a7f&profile_id=164&oauth2_token_id=57447761',
+        'url': 'https://www.pexels.com/download/video/27047981/',
         'id': 5,
         'like_count': 90,
         'comment_count': 20
@@ -1039,7 +1039,7 @@ def add_demo_videos():
         'producer': 'Emma Nguyen',
         'genre': 'Education',
         'age_rating': 'G',
-        'url': 'https://player.vimeo.com/external/395693928.sd.mp4?s=a49c57b804e922c76a4973a7f81af8a288b0eefe&profile_id=164&oauth2_token_id=57447761',
+        'url': 'https://www.pexels.com/download/video/27047981/',
         'id': 6,
         'like_count': 180,
         'comment_count': 50
@@ -1050,7 +1050,7 @@ def add_demo_videos():
         'producer': 'Dr. Sarah Lin',
         'genre': 'AI/Technology',
         'age_rating': 'PG',
-        'url': 'https://player.vimeo.com/external/415079850.sd.mp4?s=2aef98b0701749af12f5f412e7df409b9c7de482&profile_id=164&oauth2_token_id=57447761',
+        'url': 'https://www.pexels.com/download/video/27047981/',
         'id': 7,
         'like_count': 130,
         'comment_count': 35
@@ -1061,7 +1061,7 @@ def add_demo_videos():
         'producer': 'Michael Torres',
         'genre': 'AI/Technology',
         'age_rating': 'PG',
-        'url': 'https://player.vimeo.com/external/438486531.sd.mp4?s=57f1f0d43b672db96213f3cf5a91c1d53ed6f6fc&profile_id=164&oauth2_token_id=57447761',
+        'url': 'https://www.pexels.com/download/video/27047981/',
         'id': 8,
         'like_count': 160,
         'comment_count': 40
@@ -1072,7 +1072,7 @@ def add_demo_videos():
         'producer': 'Dr. Neil Patel',
         'genre': 'Education',
         'age_rating': 'G',
-        'url': 'https://player.vimeo.com/external/450458298.sd.mp4?s=bfd9f8a86a51a9e8688b4c9b983c77dbccf42a3b&profile_id=164&oauth2_token_id=57447761',
+        'url': 'https://www.pexels.com/download/video/27047981/',
         'id': 9,
         'like_count': 220,
         'comment_count': 70
@@ -1083,7 +1083,7 @@ def add_demo_videos():
         'producer': 'Dr. Clara Evans',
         'genre': 'AI/Technology',
         'age_rating': '12',
-        'url': 'https://player.vimeo.com/external/423778420.sd.mp4?s=9a8db0f0dd15365f83c8caa1c0e402b8f1b34de0&profile_id=164&oauth2_token_id=57447761',
+        'url': 'https://www.pexels.com/download/video/27047981/',
         'id': 10,
         'like_count': 140,
         'comment_count': 30
